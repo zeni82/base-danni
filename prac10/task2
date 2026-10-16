@@ -1,0 +1,19 @@
+CREATE TABLE Clients (
+    client_id INT PRIMARY KEY,
+    client_name VARCHAR(255),
+    client_email VARCHAR(255)
+);
+
+CREATE TABLE Equipment (
+    equipment_id INT PRIMARY KEY,
+    equipment_name VARCHAR(255)
+);
+
+CREATE TABLE EquipmentRentals (
+    client_id INT NOT NULL,
+    equipment_id INT NOT NULL,
+    rental_date DATE,
+    PRIMARY KEY (client_id, equipment_id),
+    FOREIGN KEY (client_id) REFERENCES Clients(client_id),
+    FOREIGN KEY (equipment_id) REFERENCES Equipment(equipment_id)
+);
